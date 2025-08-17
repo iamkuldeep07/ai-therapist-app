@@ -23,6 +23,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 import {
   Dialog,
   DialogContent,
@@ -40,6 +41,8 @@ export default function DashboardPage() {
   const [isSavingMood, setIsSavingMood] = useState(false);
   const [moodScore, setMoodScore] = useState<number | null>(null);
   const [showActivityLogger, setShowActivityLogger] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -97,6 +100,10 @@ export default function DashboardPage() {
     setShowActivityLogger(true);
   };
 
+  const handleStartTherapy = () => {
+    router.push("/therapy/new");
+  }; 
+
   return (
     <div className="min-h-screen bg-background p-8">
       <Container className="pt-20 pb-8 space-y-6">
@@ -137,7 +144,6 @@ export default function DashboardPage() {
                       </p>
                     </div>
                   </div>
-
                   <div className="grid gap-3">
                     <Button
                       variant="default"
@@ -147,7 +153,7 @@ export default function DashboardPage() {
                         "hover:from-[hsl(150,30%,60%)]/100 hover:to-[hsl(150,30%,60%)]/90",
                         "transition-all duration-200 group-hover:translate-y-[-2px]"
                       )}
-                      onClick={() => {}}
+                      onClick={handleStartTherapy}
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
