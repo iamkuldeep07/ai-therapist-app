@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import { logger } from "./logger";
 
 const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://kuldeep45kd:MiYfTYaSzzFnn70d@ai-therapist-agent.jislgfj.mongodb.net/?retryWrites=true&w=majority&appName=ai-therapist-agent";
+  process.env.MONGODB_URI || "";
 
 export const connectDB = async () => {
     try {
